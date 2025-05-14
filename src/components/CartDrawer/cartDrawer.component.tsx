@@ -20,7 +20,9 @@ const CartDrawer: React.FC = () => {
       const desktop = window.innerWidth >= 768;
       setIsDesktop(desktop);
       if (desktop) {
-        setIsOpen(true); // Keep cart open on desktop by default
+        setIsOpen(true);
+      } else {
+        setIsOpen(false);
       }
     };
     window.addEventListener('resize', handleResize);
@@ -131,7 +133,7 @@ const CartDrawer: React.FC = () => {
 
   if (isDesktop) {
     return (
-      <aside className=" max-h-[calc(100vh-4rem)] sticky top-8 overflow-y-auto bg-brand-cart-bg dark:bg-dark-brand-cart-bg shadow-lg ml-4 hidden md:block rounded-lg">
+      <aside className="w-[500px] max-h-[calc(100vh-4rem)] sticky top-8 overflow-y-auto bg-brand-cart-bg dark:bg-dark-brand-cart-bg shadow-lg ml-4 hidden md:block rounded-lg">
         {cartContent}
       </aside>
     );
@@ -143,7 +145,7 @@ const CartDrawer: React.FC = () => {
       onClick={() => setIsOpen(false)}
     >
       <div 
-        className="fixed top-4 right-4 bottom-4 w-full max-w-md bg-brand-cart-bg dark:bg-dark-brand-cart-bg shadow-xl flex flex-col rounded-lg overflow-hidden"
+        className="fixed top-4 bottom-4 left-1/2 w-full max-w-md bg-brand-cart-bg dark:bg-dark-brand-cart-bg shadow-xl flex flex-col rounded-lg overflow-hidden transform -translate-x-1/2"
         onClick={(e) => e.stopPropagation()}
       >
         {cartContent}
