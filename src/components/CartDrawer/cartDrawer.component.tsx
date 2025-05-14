@@ -45,11 +45,11 @@ const CartDrawer: React.FC = () => {
   };
 
   const cartContent = (
-    <div className="h-full flex flex-col text-gray-800 dark:text-brand-off-white"> {/* BG and rounding moved to parent */}
-      <div className="flex items-center justify-between p-2 border-b border-gray-300 dark:border-gray-700 bg-gray-400 dark:bg-zinc-900"> {/* Reduced padding, added darker background */}
+    <div className="h-full flex flex-col text-gray-800 dark:text-brand-off-white">
+      <div className="flex items-center justify-between p-2 border-b border-gray-300 dark:border-gray-700 bg-gray-400 dark:bg-zinc-900">
         <h2 className="text-lg font-semibold text-gray-700 dark:text-gray-300">Seu Carrinho ({itemCount})</h2>
         {!isDesktop && (
-          <button onClick={() => setIsOpen(false)} className="p-1 rounded hover:bg-gray-300 dark:hover:bg-gray-700">
+          <button onClick={() => setIsOpen(false)} className="p-1 rounded-sm hover:bg-gray-300 dark:hover:bg-gray-700">
             <XMarkIcon className="h-6 w-6 text-gray-700 dark:text-gray-300" />
           </button>
         )}
@@ -131,7 +131,7 @@ const CartDrawer: React.FC = () => {
 
   if (isDesktop) {
     return (
-      <aside className="w-96 max-h-[calc(100vh-4rem)] sticky top-8 overflow-y-auto bg-brand-cart-bg dark:bg-dark-brand-cart-bg shadow-lg ml-4 hidden md:block rounded-lg">
+      <aside className=" max-h-[calc(100vh-4rem)] sticky top-8 overflow-y-auto bg-brand-cart-bg dark:bg-dark-brand-cart-bg shadow-lg ml-4 hidden md:block rounded-lg">
         {cartContent}
       </aside>
     );

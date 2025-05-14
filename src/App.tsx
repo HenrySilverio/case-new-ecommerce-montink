@@ -5,6 +5,7 @@ import CartDrawer from './components/CartDrawer/cartDrawer.component';
 import Footer from './components/Footer/footer.component';
 import Header from './components/Header/header.component';
 import { useEffect } from 'react';
+import ProductList from './components/ProductList/productList.component';
 
 function App() {
   const [theme] = useAtom(themeAtom);
@@ -19,6 +20,9 @@ function App() {
     <div className="flex flex-col min-h-screen">
       <Header />
       <main className="flex-grow container mx-auto p-4 flex">
+        <div className="flex-grow">
+          <ProductList />
+        </div>
         <CartDrawer />
       </main>
       <Footer />
