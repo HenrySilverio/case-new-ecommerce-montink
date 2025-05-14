@@ -4,7 +4,7 @@ const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-brand-blue text-brand-off-white p-8 text-center mt-auto">
+    <footer className="bg-brand-blue text-brand-off-white dark:bg-dark-brand-blue dark:text-dark-brand-off-white p-8 text-center mt-auto">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
         <div className="text-sm">
           <p>&copy; {currentYear} Henrique Silvério</p>
