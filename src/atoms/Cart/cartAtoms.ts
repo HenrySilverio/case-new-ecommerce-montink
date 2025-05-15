@@ -15,4 +15,8 @@ export const cartItemCountAtom = atom((get) => {
   return items.reduce((count, item) => count + item.quantity, 0);
 });
 
+export type AppView = "productList" | "productDetail" | "orderConfirmation";
+export const currentViewAtom = atom<AppView>("productList");
+export const currentProductIdAtom = atom<string | null>(null);
+
 export const cartDrawerOpenAtom = atom(false);

@@ -3,6 +3,7 @@ import { mockProducts } from '../../services/mockData';
 import ProductCard from '../ProductCard/productCard.component';
 
 const ProductList: React.FC = () => {
+  // For now, using all mockProducts. Later, this could be paginated, filtered, etc.
   const productsToDisplay = mockProducts;
 
   return (
@@ -24,3 +25,4 @@ const ProductList: React.FC = () => {
 };
 
 export default ProductList;
+

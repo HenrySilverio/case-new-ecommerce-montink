@@ -1,108 +1,136 @@
-import { CartItem } from "../Interface/cart.interface";
 
-export interface Product extends CartItem {
+export interface BaseProduct {
   id: string;
   name: string;
-  description: string;
-  category: string;
-  promotional?: boolean;
-  icon: string;
   price: number;
   quantity: number;
+  icon: string;
+  icons: string[];
+}
+
+export interface ProductVariant {
+  size?: string[];
+  color?: string[];
+}
+
+export interface Product extends BaseProduct {
+  description: string;
+  category: string;
+  promotional?: boolean; 
+  variants?: ProductVariant;
 }
 
 export const mockProducts: Product[] = [
   {
-    id: 'prod_001',
-    name: 'Apple iPhone 15 Pro',
-    price: 7999.9,
+    id: "prod_001",
+    name: "Smartphone X Pro",
+    price: 2999.90,
     quantity: 1,
-    icon: '📱',
-    description:
-      'Apple iPhone 15 Pro com câmera tripla de 48MP, tela Super Retina XDR de 120Hz e chip A17 Pro. Desempenho excepcional para fotos, vídeos e jogos.',
-    category: 'Eletrônicos',
+    icon: "📱",
+    icons: ["📱", "📲", "🤳"],
+    description: "O mais recente Smartphone X Pro com câmera de 108MP, tela AMOLED de 120Hz e processador Snapdragon de última geração. Perfeito para jogos e fotografia.",
+    category: "Eletrônicos",
+    promotional: true,
+    variants: {
+      size: ["128GB", "256GB", "512GB"],
+      color: ["Preto", "Branco", "Azul"],
+    },
+  },
+  {
+    id: "prod_002",
+    name: "Notebook UltraSlim Y",
+    price: 4599.00,
+    quantity: 1,
+    icon: "💻",
+    icons: ["💻", "⌨️", "🖱️"],
+    description: "Notebook UltraSlim Y, leve, potente e com bateria de longa duração. Ideal para trabalho e estudos, com tela de 14 polegadas Full HD.",
+    category: "Informática",
+    variants: {
+      size: ["8GB RAM", "16GB RAM"],
+      color: ["Prata", "Cinza Espacial"],
+    },
+  },
+  {
+    id: "prod_003",
+    name: "Fone de Ouvido Z Bass",
+    price: 349.99,
+    quantity: 1,
+    icon: "🎧",
+    icons: ["🎧", "🎶", "🎤"],
+    description: "Fone de Ouvido Z Bass com cancelamento de ruído ativo, som imersivo de alta fidelidade e design confortável para longas horas de uso.",
+    category: "Acessórios",
+    promotional: true,
+    variants: {
+      color: ["Preto", "Branco", "Vermelho"],
+    },
+  },
+  {
+    id: "prod_004",
+    name: "Smartwatch Fit Plus",
+    price: 899.00,
+    quantity: 1,
+    icon: "⌚",
+    icons: ["⌚", "🏃", "💓"],
+    description: "Smartwatch Fit Plus com monitoramento de saúde completo, GPS integrado, mais de 50 modos de esporte e design elegante.",
+    category: "Vestuário Inteligente",
+    variants: {
+      size: ["Pequeno", "Grande"],
+      color: ["Preto", "Rosa"],
+    },
+  },
+  {
+    id: "prod_005",
+    name: "Câmera ProShot 4K",
+    price: 1799.50,
+    quantity: 1,
+    icon: "📷",
+    icons: ["📷", "🏞️", "🎬"],
+    description: "Câmera de Ação ProShot 4K, à prova d\'água, com estabilização avançada e gravação em ultra alta definição. Capture todos os seus momentos.",
+    category: "Eletrônicos",
     promotional: true,
   },
   {
-    id: 'prod_002',
-    name: 'Dell XPS 13 Plus',
-    price: 9999.0,
+    id: "prod_006",
+    name: "Tablet EduTab 10",
+    price: 1250.00,
     quantity: 1,
-    icon: '💻',
-    description:
-      'Notebook Dell XPS 13 Plus, ultrafino, com processador Intel Core i7 de 12ª geração, 16GB RAM, SSD de 512GB e tela InfinityEdge Full HD.',
-    category: 'Informática',
+    icon: "📝", 
+    icons: ["📝", "📖", "🎨"],
+    description: "Tablet EduTab 10 com tela de 10 polegadas, ideal para estudos e entretenimento, com controle parental e conteúdo educativo.",
+    category: "Informática",
+    variants: {
+      color: ["Azul", "Rosa", "Verde"],
+    },
   },
   {
-    id: 'prod_003',
-    name: 'Sony WH-1000XM5',
-    price: 1999.99,
+    id: "prod_007",
+    name: "Console Gamer NextGen",
+    price: 3999.00,
     quantity: 1,
-    icon: '🎧',
-    description:
-      'Fone de ouvido Sony WH-1000XM5 com cancelamento de ruído líder de mercado, áudio premium e bateria de até 30 horas.',
-    category: 'Acessórios',
-    promotional: true,
+    icon: "🎮",
+    icons: ["🎮", "🕹️", "🏆"],
+    description: "Console Gamer NextGen com gráficos de última geração, SSD ultrarrápido e uma vasta biblioteca de jogos exclusivos. A melhor experiência gamer.",
+    category: "Games",
   },
   {
-    id: 'prod_004',
-    name: 'Samsung Galaxy Watch 6',
-    price: 1899.0,
+    id: "prod_008",
+    name: "Livro: A Jornada do Código",
+    price: 49.90,
     quantity: 1,
-    icon: '⌚',
-    description:
-      'Samsung Galaxy Watch 6 com monitoramento avançado de saúde, GPS integrado, resistência à água e design sofisticado.',
-    category: 'Vestuário Inteligente',
-  },
-  {
-    id: 'prod_005',
-    name: 'GoPro HERO12 Black',
-    price: 2999.5,
-    quantity: 1,
-    icon: '📷',
-    description:
-      'Câmera de ação GoPro HERO12 Black, gravação em 5.3K, estabilização HyperSmooth 6.0 e resistente à água até 10m.',
-    category: 'Eletrônicos',
-    promotional: true,
-  },
-  {
-    id: 'prod_006',
-    name: 'Samsung Galaxy Tab S9',
-    price: 4999.0,
-    quantity: 1,
-    icon: '📝',
-    description:
-      'Tablet Samsung Galaxy Tab S9 com tela AMOLED de 11", processador Snapdragon 8 Gen 2, S Pen e bateria de longa duração.',
-    category: 'Informática',
-  },
-  {
-    id: 'prod_007',
-    name: 'Kindle Paperwhite 11ª Geração',
-    price: 649.0,
-    quantity: 1,
-    icon: '🖥️',
-    description:
-      'Kindle Paperwhite 11ª Geração, tela de 6.8", iluminação ajustável, resistente à água e bateria para semanas de leitura.',
-    category: 'Informática',
-  },
-  {
-    id: 'prod_008',
-    name: 'Livro: Clean Code',
-    price: 99.9,
-    quantity: 1,
-    icon: '📚',
-    description:
-      'Livro "Clean Code" de Robert C. Martin, referência essencial para boas práticas de programação e desenvolvimento de software limpo.',
-    category: 'Livros',
+    icon: "📚",
+    icons: ["📚", "👨‍💻", "💡"],
+    description: "Best-seller \"A Jornada do Código\", uma aventura épica pelo mundo da programação, ideal para iniciantes e experientes.",
+    category: "Livros",
   },
 ];
 
 // Function to get a product by ID (useful for product detail page)
 export const getProductById = (id: string): Product | undefined => {
-  return mockProducts.find((product) => product.id === id);
+  return mockProducts.find((product: Product) => product.id === id);
 };
 
 // Function to get promotional products
 export const getPromotionalProducts = (): Product[] => {
-  return mockProducts.filter((product) => product.promotional);
+  return mockProducts.filter((product: Product) => product.promotional);
 };
+
