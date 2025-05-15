@@ -6,6 +6,7 @@ import Footer from './components/Footer/footer.component';
 import Header from './components/Header/header.component';
 import { useEffect } from 'react';
 import ProductList from './components/ProductList/productList.component';
+import PromotionalCarousel from './components/PromotionalCarousel/promotionalCarousel.component';
 
 function App() {
   const [theme] = useAtom(themeAtom);
@@ -21,6 +22,7 @@ function App() {
       <Header />
       <main className="flex-grow container mx-auto p-4 flex">
         <div className="flex-grow">
+          <PromotionalCarousel />
           <ProductList />
         </div>
         <CartDrawer />
