@@ -2,7 +2,7 @@ import { atom } from "jotai";
 import { cartItemsAtom } from "../Cart/cartAtoms";
 import { cepAtom } from "../Cep/cepAtoms";
 
-function addBusinessDays(startDate: Date, days: number): Date {
+export function addBusinessDays(startDate: Date, days: number): Date {
   let currentDate = new Date(startDate);
   let addedDays = 0;
   while (addedDays < days) {
