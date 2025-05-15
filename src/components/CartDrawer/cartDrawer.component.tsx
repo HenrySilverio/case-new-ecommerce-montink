@@ -57,6 +57,7 @@ const CartDrawer: React.FC = () => {
     if (persistedCep && !address && persistedCep.length === 8) {
        handleCepLookup(persistedCep);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [persistedCep]);
 
   const handleCepInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {

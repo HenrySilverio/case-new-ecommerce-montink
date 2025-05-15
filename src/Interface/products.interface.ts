@@ -8,4 +8,8 @@ export interface Product extends CartItem {
   price: number;
   quantity: number;
   icon?: string;
+  variants?: {
+    sizes?: string[];
+    colors?: string[];
+  };
 }
