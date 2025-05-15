@@ -1,47 +1,108 @@
-# Getting Started with Create React App
+# New E-Commerce Montink
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Descrição do Projeto
 
-## Available Scripts
+Este projeto é um front-end de e-commerce inspirado em grandes marketplaces (Amazon, Mercado Livre, Shopee), construído com React, TypeScript e Tailwind CSS. O design é moderno, responsivo (mobile-first) e acessível. A aplicação suporta tema claro e escuro, possui um carrinho em gaveta/sidebar, consulta de CEP via API ViaCEP e cálculo de data estimada de entrega.
 
-In the project directory, you can run:
+### Funcionalidades principais
 
-### `yarn start`
+- **Layout responsivo** (mobile-first) e design intuitivo.
+- **Tema claro e escuro** com persistência no `localStorage` (`themeAtom`).
+- **Consulta de CEP e exibição de endereço** no carrinho (`CartDrawer`):
+  - Validação de 8 dígitos.
+  - Chamada à API ViaCEP (`src/services/viaCep.service.ts`).
+  - CEP válido salvo em `localStorage` (`cepAtom`).
+  - Exibição de logradouro, bairro, cidade e UF.
+- **Cálculo de data estimada de entrega** (5 dias úteis):
+  - Lógica em `src/atoms/addBusinessDays/addBusinessDaysAtom.ts`.
+  - Exibe apenas se houver CEP válido e itens no carrinho.
+- **Carrinho de compras lateral**:
+  - Gaveta no mobile e sidebar fixa no desktop.
+  - Adicionar, remover, atualizar quantidade e limpar carrinho.
+  - Átomos Jotai: `cartItemsAtom`, `cartTotalAtom`, `cartItemCountAtom`, `cartDrawerOpenAtom`.
+- **Produtos com placeholder de imagem** e carrossel de promoções:
+  - Placeholder de imagem (35% da altura do card) e miniaturas.
+  - Carrossel com auto-scroll (`PromotionalCarousel`).
+- **Página de confirmação de pedido** (`OrderConfirmation`):
+  - Resumo de itens, total pago, data estimada e endereço.
+  - Botão “Continuar Comprando” limpa sessão e retorna ao catálogo.
+- **Persistência de estado** usando Jotai com `localStorage` e `sessionStorage`.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Tecnologias Utilizadas
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- **React** (v18+)
+- **TypeScript**
+- **Tailwind CSS** (v3.x)
+- **Jotai** (gerenciamento de estado)
+- **Axios** (cliente HTTP)
+- **Heroicons** (ícones SVG)
+- **Jest** e **React Testing Library** (testes)
 
-### `yarn test`
+## Estrutura do Projeto
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+new-ecommerce-montink/
+├── public/                 # Arquivos estáticos
+├── src/
+│   ├── atoms/              # Estados globais (Jotai)
+│   ├── components/         # Componentes React
+│   │   ├── Header/
+│   │   ├── Footer/
+│   │   ├── CartDrawer/
+│   │   ├── PromotionalCarousel/
+│   │   ├── ProductList/
+│   │   ├── ProductCard/
+│   │   ├── ProductDetail/
+│   │   └── OrderConfirmation/
+│   ├── Interface/          # Interfaces TypeScript
+│   ├── services/           # Mock data e serviço ViaCEP
+│   ├── App.tsx             # Componente principal e navegação de views
+│   ├── index.tsx           # Ponto de entrada React
+│   └── index.css           # Estilos globais Tailwind
+├── tailwind.config.js      # Configuração Tailwind customizada
+├── postcss.config.js       # Configuração PostCSS
+├── tsconfig.json           # Configuração TypeScript
+├── package.json
+└── README.md               # Documentação do projeto
+```
 
-### `yarn build`
+## Instruções de Instalação e Uso
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Clone este repositório:
+   ```bash
+   git clone <REPO_URL>
+   cd new-ecommerce-montink
+   ```
+2. Instale as dependências:
+   ```bash
+   npm install
+   ```
+3. Inicie o servidor de desenvolvimento:
+   ```bash
+   npm start
+   ```
+4. Abra `http://localhost:3000` no navegador.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Testes
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Execute os testes com:
+```bash
+npm test
+```
 
-### `yarn eject`
+## Deploy na Vercel (Opcional)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+1. Conecte o repositório à Vercel.
+2. Configure:
+   - **Framework:** Create React App
+   - **Build Command:** `npm run build`
+   - **Output Directory:** `build`
+3. Deploy.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Contribuições
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Contribuições são bem-vindas! Abra uma issue para propor melhorias ou correções.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Licença
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-# case-new-ecommerce-montink
+Este projeto está sob a licença MIT. Consulte o arquivo `LICENSE` para mais detalhes.
