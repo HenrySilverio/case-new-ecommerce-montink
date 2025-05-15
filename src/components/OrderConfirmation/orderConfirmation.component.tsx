@@ -1,13 +1,15 @@
 import React from 'react';
-import { useAtomValue } from 'jotai';
+import { useAtomValue, useSetAtom } from 'jotai';
 import { CheckCircleIcon } from '@heroicons/react/24/solid';
 import { completedOrderAtom } from '../../atoms/OrderConfirmation/orderConfirmationAtoms';
+import { currentViewAtom } from '../../atoms/Cart/cartAtoms';
 
 const OrderConfirmationPage: React.FC = () => {
   const orderDetails = useAtomValue(completedOrderAtom);
+  const setCompletedOrder = useSetAtom(completedOrderAtom);
+  const setCurrentView = useSetAtom(currentViewAtom);
 
   if (!orderDetails) {
-    // This should ideally not happen if navigation/display is handled correctly
     return (
       <div className="p-4 md:p-8 text-center">
         <p className="text-red-500">Erro: Detalhes do pedido não encontrados.</p>
@@ -73,7 +75,16 @@ const OrderConfirmationPage: React.FC = () => {
           <p className="text-sm text-gray-500 dark:text-gray-400">
             Você receberá um e-mail de confirmação em breve. Para qualquer dúvida, entre em contato com nosso suporte.
           </p>
-          {/* TODO: Add a button to navigate back to home page or product listing (Continuar Comprando) */}
+          <button
+            onClick={() => {
+              sessionStorage.clear();
+              setCompletedOrder(null);
+              setCurrentView('productList');
+            }}
+            className="mt-4 bg-brand-blue hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md"
+          >
+            Continuar Comprando
+          </button>
         </div>
       </div>
     </div>
